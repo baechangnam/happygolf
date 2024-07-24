@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="branchName"
+            type="String" />
+        <variable
+            name="ranking"
+            type="com.artilearn.happygolfgo.ui.home.record.model.RankingInBranchData"/>
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:gravity="start|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@{branchName}"
+                android:textColor="@color/color_black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="역삼점 훈련소" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <!--              div_avg-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="6dp"
+            android:background="@drawable/shape_radius8"
+            android:backgroundTint="@color/color_white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="10dp"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/work_sans_medium"
+                android:text="@{ranking.title}"
+                android:textColor="@color/color_black"
+                android:textSize="14dp"
+                tools:text="5과목 평균" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_medal_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="middle"
+                        android:maxLines="1"
+                        android:text="@{ranking.firstName}"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="김가일*가산디" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:text="회원"
+                        android:textColor="@color/color_black"
+                        android:textSize="12dp"
+                        tools:text="회원" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{ranking.firstScore}"
+                        android:textColor="@color/blue500"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="100" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="점"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="점" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_medal_2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="middle"
+                        android:maxLines="1"
+                        android:text="@{ranking.secondName}"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="김가일*가산디" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:text="회원"
+                        android:textColor="@color/color_black"
+                        android:textSize="12dp"
+                        tools:text="회원" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{ranking.secondScore}"
+                        android:textColor="@color/blue500"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="100" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="점"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="점" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_medal_3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="middle"
+                        android:maxLines="1"
+                        android:text="@{ranking.thirdName}"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="김가일*가산디" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:text="회원"
+                        android:textColor="@color/color_black"
+                        android:textSize="12dp"
+                        tools:text="회원" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{ranking.thirdScore}"
+                        android:textColor="@color/blue500"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="100" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="점"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="점" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

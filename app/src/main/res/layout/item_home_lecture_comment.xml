@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.artilearn.happygolfgo.data.LectureComment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="28dp" android:layout_marginTop="5dp"
+            android:layout_height="28dp"
+            android:background="@drawable/user_profile">
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="0dp" android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    bind:setTrainBody="@{item.reg_usr_id}"
+                    tools:text="섹션테스트" />
+
+                <TextView
+                    android:id="@+id/reg_date" android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#777777"
+                    android:textSize="12dp"
+                    bind:setTrainBody="@{item.first_reg_dtm}"
+                    tools:text="섹션테스트" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:textSize="13dp"
+                bind:setTrainBody="@{item.cmmt_text}"
+                tools:text="섹션테스트" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</layout>

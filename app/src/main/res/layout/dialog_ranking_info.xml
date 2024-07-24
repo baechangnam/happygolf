@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/tools">
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_training_record_section"
+    android:layout_gravity="center"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="14dp"
+    >
+
+<!--    -시험 기간 : 매월 넷째 주 월요일부터 일요일(7일간) -시험 과목 : 골프력 중 5과목(Putt력, S/G력, IRON력, DRV력, W/U력)-->
+<!--    -응시 방법 : 앱 초기화면 상단의 ‘응시하기' 버튼 클릭, 시험 기간 안에 5과목을 모두 응시하여야 응시 완료-->
+<!--    -규정 : 각 과목별로 첫 번째 점수만 인정, 1회에 한하여 재시험을 치를 수 있으나 이전 기록은 초기화 됨-->
+<!--    -시험 점수는 2시간 이상의 간격을 두고 수집/갱신. -동점자 처리 : Putt력, S/G력, IRON력, DRV력, W/U력 순으로 비교하여 점수가 더 높은 사람을 우선하여 순위 산출-->
+<!--    -시상 : 분기 별로 최고 성적과 성적 향상 우수자 및 우수 훈련소에 대해 시상-->
+   
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="0dp"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- 행복골프 월말 시험 -"
+                android:textColor="@color/color_black"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:id="@+id/dialog_title_tv" />
+            <Button
+                android:id="@+id/btnPopupClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:background="@color/color_white"
+                android:textSize="20dp"
+                android:text="X"
+                style="?android:attr/borderlessButtonStyle"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-시험 기간 :  매월 넷째 주 월요일부터 일요일(7일간)"
+            tools:text="-시험 기간 :  매월 넷째 주 월요일부터 일요일(7일간)"
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-시험 과목 : 골프력 중 5과목(Putt력, S/G력, IRON력, DRV력, W/U력)"
+            tools:text="-시험 과목 : 골프력 중 5과목(Putt력, S/G력, IRON력, DRV력, W/U력)"
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-응시 방법 : 앱 초기화면 상단의 ‘응시하기' 버튼 클릭, 시험 기간 안에 5과목을 모두 응시하여야 응시 완료"
+            tools:text="-응시 방법 : 앱 초기화면 상단의 ‘응시하기' 버튼 클릭, 시험 기간 안에 5과목을 모두 응시하여야 응시 완료"
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-규정 : 각 과목별로 첫 번째 점수만 인정, 1회에 한하여 재시험을 치를 수 있으나 이전 기록은 초기화 됨"
+            tools:text="-규정 : 각 과목별로 첫 번째 점수만 인정, 1회에 한하여 재시험을 치를 수 있으나 이전 기록은 초기화 됨"
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-시험 점수는 2시간 이상의 간격을 두고 수집/갱신."
+            tools:text="-시험 점수는 2시간 이상의 간격을 두고 수집/갱신."
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-동점자 처리 : Putt력, S/G력, IRON력, DRV력, W/U력 순으로 비교하여 점수가 더 높은 사람을 우선하여 순위 산출"
+            tools:text="-동점자 처리 : Putt력, S/G력, IRON력, DRV력, W/U력 순으로 비교하여 점수가 더 높은 사람을 우선하여 순위 산출"
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:textSize="16dp"
+            android:text="-시상 : 분기 별로 최고 성적과 성적 향상 우수자 및 우수 훈련소에 대해 시상"
+            tools:text="-시상 : 분기 별로 최고 성적과 성적 향상 우수자 및 우수 훈련소에 대해 시상출"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+</layout>

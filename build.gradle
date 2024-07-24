@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.8.0'
+    repositories {
+        google()
+        jcenter()
+        //maven {url 'https://maven.fabric.io/public'} // deprecated crashlytics fabric
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0"
+
+        // fcm
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
+        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1'
+
+        // deprecated crashlytics fabric
+        //classpath 'io.fabric.tools:gradle:1.31.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/'
+            allowInsecureProtocol = true
+        }
+        maven {url 'https://maven.google.com/'}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

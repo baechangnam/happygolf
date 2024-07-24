@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#008577</color>
+    <color name="color_green">#40C057</color>
+    <color name="color_dark_green">#30AA46</color>
+    <color name="color_gray">#F6F6F6</color>
+    <color name="color_dark_red">#E54C4C</color>
+    <color name="color_red">#E54C4C</color>
+    <color name="color_line_gray">#EEEEEE</color>
+    <color name="color_sub_gray">#888888</color>
+    <color name="color_black">#000000</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_blue">#4C7BE5</color>
+    <color name="color_lucky_gray">#777777</color>
+    <color name="color_reserve_color">#49BBC4</color>
+    <color name="color_alram_unread">#DDFFDD</color>
+    <color name="color_yellow">#FFFF00</color>
+    <color name="color_reservation_lesson">#DBE3F0</color>
+    <color name="color_reservation_lesson_text_month">#4071C0</color>
+    <color name="color_reservation_lesson_text_day">#1B4383</color>
+    <color name="color_reservation_plate">#DBF0DF</color>
+    <color name="color_reservation_plate_text_month">#2F9E44</color>
+    <color name="color_reservation_plate_text_day">#147126</color>
+    <color name="color_dr_text_color">#CC5DE8</color>
+    <color name="color_wu_text_color">#845EF7</color>
+    <color name="color_iron_text_color">#5C7CFA</color>
+    <color name="color_sw_text_color">#22B8CF</color>
+    <color name="color_putt_text_color">#51CF66</color>
+    <color name="color_mypage_update">#F23C3C</color>
+    <color name="color_graph_dr">#CC5DE8</color>
+    <color name="color_graph_wu">#845EF7</color>
+    <color name="color_graph_iron">#5C7CFA</color>
+    <color name="color_graph_sw">#22B8CF</color>
+    <color name="color_graph_putt">#51CF66</color>
+    <color name="color_graph_direction">#F8BBD0</color>
+    <color name="color_graph_green_attack">#00897b</color>
+    <color name="color_header_view_background_in_reservation">#F0EEEE</color>
+    <color name="color_announcement_in_header_view_in_reservation">#67D2FF</color>
+    <color name="color_announcement_subject_in_header_view_in_reservation">#7B6F72</color>
+    <color name="color_more_in_header_view_in_reservation">#7B6F72</color>
+    <color name="color_exam_in_header_view_in_reservation">#FF9F3F</color>
+    <color name="color_no_action_in_header_view_in_reservation">#67BC63</color>
+    <color name="color_bg_training_record_section_my_golf_power">#3F7AA4</color>
+    <color name="color_bg_my_golf_power_exam_result_page_info">#3F7AA4</color>
+    <color name="color_bg_my_golf_power_exam_divider">#E5E5E5</color>
+    <color name="color_my_golf_power_title_color">#727272</color>
+    <color name="color_my_golf_power_sub_title_color">#3F7AA4</color>
+    <color name="color_my_golf_power_normal_score">#4BBFF0</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="red">#FF6565</color>
+    <color name="red_100">#FFEAEA</color>
+    <color name="gray100">#F9F9F9</color>
+    <color name="gray200">#F3F3F3</color>
+    <color name="gray300">#DCE0E5</color>
+    <color name="gray400">#A2A9AE</color>
+    <color name="gray500">#7A8186</color>
+    <color name="blue100">#EEFAFF</color>
+    <color name="blue500">#26A9E0</color>
+    <color name="green100">#F3FFD9</color>
+    <color name="green500">#A3E023</color>
+    <color name="orange500">#FAAD3D</color>
+    <color name="orange100">#FFF6EA</color>
+    <color name="black_op20">#33000000</color>
+
+    <color name="color_lect_green">#3FC057</color>
+    <color name="color_lect_search_bg">#fafafa</color>
+
+
+</resources>

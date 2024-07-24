@@ -1,0 +1,1463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.artilearn.happygolfgo.ui.home.record.TrainingRecordViewModel" />
+        <variable
+            name="summaryTime"
+            type="com.artilearn.happygolfgo.ui.home.record.model.TRSummaryTimeModel"/>
+
+        <variable
+            name="summaryWeight"
+            type="com.artilearn.happygolfgo.ui.home.record.model.TRSummaryWeightModel"/>
+
+        <variable
+            name="summaryGolfPower"
+            type="com.artilearn.happygolfgo.ui.home.record.model.TRSummaryGolfPowerModel"/>
+
+        <variable
+            name="summaryRound"
+            type="com.artilearn.happygolfgo.ui.home.record.model.TRSummaryRoundModel"/>
+
+        <variable
+            name="exam"
+            type="com.artilearn.happygolfgo.data.exam.Exam"/>
+
+        <variable
+            name="golfPower"
+            type="com.artilearn.happygolfgo.data.exam.golfpower.Res"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        >
+
+        <androidx.core.widget.NestedScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="0dp"
+                android:paddingLeft="0dp"
+                >
+            <!--                    2023.05.02 시험 성적에 대한 데이타를 보여주지 않는다. -->
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/time_section_layout"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="0dp"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:outlineProvider="none"-->
+<!--                    android:padding="0dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="320dp"-->
+<!--                        android:background="@color/color_bg_training_record_section_my_golf_power"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="1dp"-->
+<!--                        android:orientation="vertical"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintVertical_bias="0.0">-->
+<!--                        <androidx.viewpager2.widget.ViewPager2-->
+<!--                            android:id="@+id/viewpager"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="730dp"-->
+<!--                            android:layout_marginHorizontal="16dp"-->
+<!--                            android:padding="10dp"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <View-->
+<!--                        android:layout_width="10dp"-->
+<!--                        android:layout_height="13dp"-->
+<!--                        android:background="@drawable/my_golf_ranking_pager_left_arrow"-->
+<!--                        android:layout_marginStart="4dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        />-->
+<!--                    <View-->
+<!--                        android:layout_width="10dp"-->
+<!--                        android:layout_height="13dp"-->
+<!--                        android:layout_marginEnd="4dp"-->
+<!--                        android:background="@drawable/my_golf_ranking_pager_right_arrow"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        />-->
+                <!--                   summary time  -->
+                <!-- vc45 2022년 누적 훈련 시간 -->
+
+                <TextView
+                    android:id="@+id/tvExamInProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:textStyle="bold"
+                    android:text="@{exam.headTitle}"
+                    android:textColor="@color/color_black"
+                    android:textSize="16dp"
+                    tools:text="진행중인 시험"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clExamInProgress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/shape_radius8"
+                    android:backgroundTint="@color/gray100"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvExamInProgress">
+
+                    <TextView
+                        android:id="@+id/tvExamDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{exam.subject}"
+                        tools:text="2월 시험"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvExamEndDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="@{exam.contents}"
+                        tools:text="종료까지 0일 00시간"
+                        android:textColor="#FF6565"
+                        android:textSize="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvExamDate" />
+
+                    <TextView
+                        android:id="@+id/tvTakeTest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/shape_radius8"
+                        android:backgroundTint="@color/blue500"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="응시하기"
+                        setExamState="@{exam.state}"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_white"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/vDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/clExamInProgress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/gray200"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llExam"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:background="@drawable/shape_radius8_stroke_1"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vDivider">
+
+                    <TextView
+                        android:id="@+id/tvExam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="3월 시험"
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/chevron_bottom" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.artilearn.happygolfgo.ui.home.record.model.RadarChartView
+                    android:id="@+id/radarChart"
+                    android:layout_marginTop="26dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="343dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llExam"/>
+
+                <LinearLayout
+                    android:id="@+id/llParticipationCount"
+                    android:paddingVertical="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radarChart"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@color/color_black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        tools:text="총 0000명이 참여중입니다."
+                        android:text="@{golfPower.totalParticipants}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/gray400"
+                        android:textSize="12dp"
+                        tools:text="updated 0.00 00:00"
+                        setUpdateDate="@{golfPower.updatedDate}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:id="@+id/llScore"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/llParticipationCount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_radius8_blue100_stroke1_blue500"
+                        android:gravity="center"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                setAvgGolfPower="@{golfPower}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_black"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                tools:text="평균점수 64점" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="훈련소 내 "
+                                android:textColor="@color/color_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                setRanking="@{golfPower.avg.rankingInMyBranch}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue500"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
+                                tools:text="35등" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / 전국 "
+                                android:textColor="@color/color_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                setRanking="@{golfPower.avg.rankingInAllBranch}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue500"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
+                                tools:text="5012등" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvScore"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingBottom="14dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llScore"
+                    tools:listitem="@layout/item_score"
+                    tools:itemCount="5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:id="@+id/llImprovementScore"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/rvScore"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:padding="20dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_radius8_orange100_stroke1_orange500"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="향상된 점수"
+                                android:textColor="@color/color_black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_marginStart="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="13점"
+                                setImprovedScore="@{golfPower.improvement.score}"
+                                android:textColor="@color/orange500"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="훈련소 내 "
+                                android:textColor="@color/color_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                setRanking="@{golfPower.improvement.rankingInMyBranch}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/orange500"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
+                                tools:text="35등" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / 전국 "
+                                android:textColor="@color/color_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="5012등"
+                                setRanking="@{golfPower.improvement.rankingInAllBranch}"
+                                android:textColor="@color/orange500"
+                                android:textSize="17dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/color_white"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/shape_radius8"
+                    android:backgroundTint="@color/blue500"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="8dp"
+                    android:id="@+id/tvShowScore"
+                    app:layout_constraintTop_toBottomOf="@+id/llImprovementScore"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="훈련소 성적 보기"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clPager"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowScore">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vpBanner"
+                        android:clipToPadding="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginVertical="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"/>
+
+                    <TextView
+                        android:id="@+id/tvBannerCount"
+                        android:paddingHorizontal="12dp"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="1dp"
+                        android:textColor="@color/color_white"
+                        android:textSize="12dp"
+                        android:backgroundTint="@color/black_op20"
+                        android:background="@drawable/shape_radius100"
+                        android:text="1/4"
+                        android:layout_marginEnd="28dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/vpBanner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvDumyData"
+                    android:text="아래 내용은 가상 데이터입니다."
+                    android:textColor="#4d4d4d"
+                    android:textSize="11dp"
+                    android:fontFamily="@font/work_sans_medium"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/clPager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:id="@+id/time_section_layout"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="22dp"-->
+<!--                        android:background="@drawable/bg_training_record_section_one"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:outlineProvider="none"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tvDumyData">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="1dp"-->
+<!--                        android:orientation="vertical"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintVertical_bias="0.0">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/time_section_layout_title"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:ellipsize="end"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textColor="#FEC74E"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:text="@{summaryTime.title}"-->
+<!--                            tools:text="훈련시간"-->
+<!--                            />-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/time_section_layout_subtitle"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:maxLines="1"-->
+<!--                                android:textColor="@color/color_white"-->
+<!--                                android:textSize="24sp"-->
+<!--                                tools:text="6"-->
+<!--                                android:text="@{summaryTime.time}" />-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/time_section_layout_subtitle_unit"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="6dp"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:maxLines="1"-->
+<!--                                android:textColor="@color/color_white"-->
+<!--                                android:textSize="18sp"-->
+<!--                                tools:text="시간"-->
+<!--                                android:text="@{summaryTime.unit}" />-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <!--              end of time_section_layout 제일 상단 누적 훈련 시간 섹션 -->
+                <!--                훈련 비중에 대한 섹션 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/weight_section_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_training_record_section"
+                    android:elevation="4dp"
+                    android:outlineProvider="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDumyData">
+
+                    <TextView
+                        android:id="@+id/weight_section_layout_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{summaryWeight.title}"
+                        android:textColor="@color/color_black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="28dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="훈련비중"
+                        />
+                    <View android:layout_width="24dp"
+                          android:layout_height="24dp"
+                        android:background="@drawable/trainining_center_weight_icon"
+                        android:layout_marginTop="-1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/weight_section_layout_title"/>
+                    <TextView
+                        android:id="@+id/weight_section_layout_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{summaryWeight.subTitle}"
+                        android:textSize="14dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        tools:text="(최근 1개월)"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View
+                        android:id="@+id/weight_section_layout_first_guideline"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/color_white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weight_section_layout_title" />
+
+                    <LinearLayout
+                        android:id="@+id/weight_section_layout_score_ll"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="17dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weight_section_layout_first_guideline">
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/weight_section_layout_score_ll" >
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/weight_section_layout_chart"
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                        <View
+                            android:id="@+id/weight_section_layout_second_guideline"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@color/color_line_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/weight_section_layout_chart" />
+
+                        <LinearLayout
+                            android:id="@+id/weight_section_layout_club_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginEnd="1dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/weight_section_layout_second_guideline">
+                            <!--                     연습: 장타 어프로치 퍼팅    -->
+                            <!--                     게임: 골프력 스크린 라운딩   -->
+                            <LinearLayout
+                                android:id="@+id/weight_section_layout_weight_names"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginEnd="6dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="연습"
+                                    android:paddingStart="6dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingBottom="6dp"
+                                    android:textColor="#FFFFFF"
+                                    android:background="@drawable/bg_training_record_weight_section_layout_exercise"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="6dp"
+                                    android:background="@drawable/bg_training_record_weight_section_layout_tv"
+                                    android:paddingBottom="6dp"
+                                    android:gravity="start"
+                                    android:orientation="horizontal"
+                                    >
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingStart="4dp"
+                                        android:text="장타"
+                                        android:textColor="#7FAFCF"
+                                        android:textSize="14dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/training_record_weight_summary_drange"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:paddingStart="1dp"
+                                        android:text="0.0%"
+                                        android:textColor="#666666"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="어프로치"
+                                        android:paddingStart="4dp"
+                                        android:textColor="#3F7AA4"
+                                        android:textSize="14dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/training_record_weight_summary_appr"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingStart="1dp"
+                                        android:text="0.0%"
+                                        android:textColor="#666666"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingStart="4dp"
+                                        android:text="퍼팅"
+                                        android:textColor="#5B5D97"
+                                        android:textSize="14dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/training_record_weight_summary_putt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:paddingStart="1dp"
+                                        android:text="0.0%"
+                                        android:textColor="#666666"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/weight_section_layout_club_names"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginEnd="6dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="게임"
+                                    android:paddingEnd="6dp"
+                                    android:paddingStart="6dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingBottom="6dp"
+                                    android:textColor="#FFFFFF"
+                                    android:background="@drawable/bg_training_record_weight_section_layout_game"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="6dp"
+                                    android:background="@drawable/bg_training_record_weight_section_layout_tv_org"
+                                    android:paddingBottom="6dp"
+                                    android:gravity="start"
+                                    android:orientation="horizontal"
+                                    >
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingStart="4dp"
+                                        android:text="골프력"
+                                        android:textColor="#FEC74E"
+                                        android:textSize="14dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/training_record_weight_summary_gpower"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:paddingStart="1dp"
+                                        android:text="0.0%"
+                                        android:textColor="#666666"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="스크린 라운딩"
+                                        android:paddingStart="4dp"
+                                        android:textColor="#F06A20"
+                                        android:textSize="14dp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/training_record_weight_summary_stroke"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingStart="1dp"
+                                        android:text="0.0%"
+                                        android:textColor="#666666"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/ivBlurGraph1"
+                            android:src="@drawable/bg_graph2_blur"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            android:background="@color/color_white"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/golf_power_section_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_training_record_section"
+                    android:elevation="4dp"
+                    android:outlineProvider="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/weight_section_layout">
+                    <TextView
+                        android:id="@+id/golf_power_section_layout_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{summaryGolfPower.title}"
+                        android:textColor="@color/color_black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        tools:text="골프력 점수"
+                        android:layout_marginStart="28dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/training_center_golf_power_icon"
+                        android:layout_marginTop="-1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/golf_power_section_layout_title"/>
+                    <TextView
+                        android:id="@+id/golf_power_section_layout_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{summaryGolfPower.subTitle}"
+                        android:textSize="14dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View
+                        android:id="@+id/golf_power_section_layout_first_guideline"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/color_white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout_title" />
+                    <LinearLayout
+                        android:id="@+id/golf_power_section_layout_score_ll"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="17dp"
+                        android:orientation="horizontal"
+                        android:weightSum="7"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout_first_guideline">
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout_score_ll">
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/golf_power_section_layout_chart"
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/golf_power_section_layout_second_guideline"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/color_line_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout_chart" />
+
+                        <LinearLayout
+                            android:id="@+id/gold_power_section_layout_club_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="17dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="17dp"
+                            android:orientation="horizontal"
+                            android:weightSum="7"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout_second_guideline">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="DR"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="WU"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="IRON"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="S/W"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="PUTT"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="방향"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="그린"
+                                android:textColor="#4D4D4D"
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/gold_power_section_layout_best_avg_legend_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="17dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="17dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/gold_power_section_layout_club_layout">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="평균점수"
+                                android:textColor="#FFFFFF"
+                                android:background="#7FAFCF"
+                                android:textSize="10sp"
+                                android:padding="6dp"
+                                android:layout_margin="10dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:layout_margin="10dp"
+                                android:padding="6dp"
+                                android:text="최고점수"
+                                android:textColor="#FFFFFF"
+                                android:background="#F06A20"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/ivBlurGraph2"
+                            android:src="@drawable/bg_stick_graph_blur"
+                            android:background="@color/color_white"
+                            android:adjustViewBounds="true"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- 스크린 라운딩 기록 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/round_section_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_training_record_section"
+                    android:elevation="4dp"
+                    android:outlineProvider="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/golf_power_section_layout">
+                    <TextView
+                        android:id="@+id/round_section_layout_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:text="@{summaryRound.title}"
+                        android:textColor="@color/color_black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/training_center_round_icon"
+                        android:layout_marginTop="-1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/round_section_layout_title"/>
+                    <TextView
+                        android:id="@+id/round_section_layout_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="20dp"
+                        android:text="@{summaryRound.subTitle}"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <View
+                        android:id="@+id/round_section_layout_first_guideline"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/color_white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/round_section_layout_title" />
+                    <!--                     베스트 라운딩 기록  -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="2dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/round_section_layout_first_guideline">
+                        <LinearLayout
+                            android:id="@+id/round_section_layout_best_score_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_training_record_round_section_ll_record"
+                            android:orientation="horizontal"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:weightSum="8">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingStart="20dp"
+                                android:layout_weight="6"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.bestTitle}"
+                                    android:textColor="#FEC74E"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.bestCC}"
+                                    android:ellipsize="end"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:textColor="@color/color_white"
+                                    android:textSize="22dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="top"
+                                    android:text="@{summaryRound.bestDate}"
+                                    android:textColor="@color/color_white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:layout_height="match_parent"
+                                >
+                                <TextView
+                                    android:id="@+id/round_section_layout_best_score"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/shape_circular_rounded_green_oval"
+                                    android:gravity="center"
+                                    android:text="@{summaryRound.bestScore}"
+                                    android:textColor="@color/color_white"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--                          3 개월 평균 -->
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_training_record_round_section_ll_record"
+                            android:orientation="horizontal"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:weightSum="8">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingStart="20dp"
+                                android:layout_weight="6"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.avgTitle}"
+                                    android:textColor="#FEC74E"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.avgCC}"
+                                    android:ellipsize="end"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="22dp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="top"
+                                    android:text=""
+                                    android:textColor="@color/color_white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:layout_height="match_parent"
+                                >
+                                <TextView
+                                    android:id="@+id/round_section_layout_avg_score"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/shape_circular_rounded_green_oval"
+                                    android:gravity="center"
+                                    android:text="@{summaryRound.avgScore}"
+                                    android:textColor="@color/color_white"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--                       3 개월 평균  -->
+                        <!--                          최근  -->
+                        <LinearLayout
+                            android:id="@+id/round_section_layout_last_score_ll"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_training_record_round_section_ll_record"
+                            android:orientation="horizontal"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:weightSum="8">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingStart="20dp"
+                                android:layout_weight="6"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.lastTitle}"
+                                    android:textColor="#FEC74E"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:gravity="bottom"
+                                    android:text="@{summaryRound.lastCC}"
+                                    android:ellipsize="end"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="22dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="top"
+                                    android:text="@{summaryRound.lastDate}"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:layout_height="match_parent"
+                                >
+                                <TextView
+                                    android:id="@+id/round_section_layout_recent_score"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/shape_circular_rounded_green_oval"
+                                    android:gravity="center"
+                                    android:text="@{summaryRound.lastScore}"
+                                    android:textColor="@color/color_white"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--          최근     -->
+                    </LinearLayout>
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/ivBlurGraph3"
+                        android:src="@drawable/bg_swing_graph_blur"
+                        android:background="@color/color_white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/round_section_layout_first_guideline"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                 end of 스크린 라우딩 기록 -->
+                <!-- 스윙 영상 기록실  -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/swing_video_section_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_training_record_swing_video"
+                    android:elevation="4dp"
+                    android:outlineProvider="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/round_section_layout">
+
+                    <LinearLayout
+                        android:id="@+id/swing_video_section_layout_ll"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal">
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="24dp"
+                                android:background="@drawable/training_center_swing_video_icon"
+                                android:layout_gravity="center_vertical"
+                                />
+                            <TextView
+                                android:id="@+id/swing_video_section_layout_subtitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/color_white"
+                                android:textSize="24sp"
+                                android:text="스윙 영상 기록실" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/swing_video_section_layout_subtitle_unit"-->
+<!--                                android:background="@drawable/bg_traing_record_swing_video_white_right_arrow"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="6dp"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:maxLines="1"-->
+<!--                                android:textColor="@color/color_white"-->
+<!--                                android:textSize="24sp"-->
+<!--                                android:text="" />-->
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

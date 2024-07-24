@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/reservation"
+        android:icon="@drawable/selector_reservation"
+        app:showAsAction="ifRoom"
+        android:title="예약" />
+    <item
+        android:id="@+id/alram"
+        android:icon="@drawable/selector_alram"
+        app:showAsAction="ifRoom"
+        android:title="알림" />
+    <item
+        android:id="@+id/training"
+        android:icon="@drawable/selector_lecture"
+        app:showAsAction="ifRoom"
+        android:title="훈련실" />
+
+    <item
+        android:id="@+id/record"
+        android:icon="@drawable/selector_record"
+        app:showAsAction="ifRoom"
+        android:title="기록실" />
+    <item
+        android:id="@+id/mypage"
+        android:icon="@drawable/selector_profile"
+        app:showAsAction="ifRoom"
+        android:title="마이페이지" />
+</menu>

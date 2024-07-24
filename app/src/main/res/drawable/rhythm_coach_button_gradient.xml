@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <bitmap android:src="@drawable/rhythm_coach_btn_bg_repeat"/>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <gradient
+                android:startColor="#0fefefef"
+                android:centerColor="#02e0e0ef"
+                android:endColor="#ffffffff"
+                android:gradientRadius="50%p"
+                android:type="radial"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,2 @@
+rootProject.name='happygolfgo'
+include ':app'

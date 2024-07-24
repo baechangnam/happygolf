@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.artilearn.happygolfgo.ui.home.lecture.LectureDetailViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="235dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/exoplayer"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/color_white"
+                        app:auto_show="true"
+                        app:controller_layout_id="@layout/exo_playback_control_view"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:resize_mode="fill" app:use_controller="true"
+                        app:show_timeout="10000"
+                        app:surface_type="surface_view" />
+
+                    <ImageView
+                        android:id="@+id/close"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/btn_gnb_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lect_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="#000000"
+                android:textSize="17dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:layout_width="76dp"     android:id="@+id/ll_like"
+                    android:layout_height="32dp"
+                    android:background="@drawable/home_training_like_bg"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="16dp"  android:id="@+id/ll_like_icon"
+                        android:layout_height="16dp"
+                        android:background="@drawable/heart_off" />
+
+                    <TextView
+                        android:layout_width="wrap_content"  android:id="@+id/ll_like_txt"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="8dp"
+                        android:textColor="@color/color_black"
+                        android:textSize="12sp"
+                        android:text="@string/lect_like" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="76dp"     android:id="@+id/ll_favor" android:layout_marginLeft="10dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/home_training_like_bg"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="12dp"  android:id="@+id/ll_favor_icon"
+                        android:layout_height="12dp"
+                        android:background="@drawable/favor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"  android:id="@+id/ll_favor_txt"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/color_black"
+                        android:textSize="12sp"
+                        android:text="담기" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/home_training_search_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10dp" android:id="@+id/ll_comment"
+                android:paddingTop="8dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/lect_comment_title"
+                        android:textColor="#000000"
+                        android:textSize="11dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/comment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical"
+                        android:text="0"
+                        android:textColor="#777777"
+                        android:textSize="11dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/comment_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/lect_no_comment"
+                        android:textColor="#000000"
+                        android:textSize="11dp" />
+
+                    <Button
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/arrow_down">
+
+                    </Button>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center_vertical"
+
+                android:paddingLeft="15dp"
+                android:text="@string/lect_same_text"
+                android:textColor="@color/color_black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_same_lect"
+                android:layout_width="match_parent" android:layout_marginTop="5dp"
+                android:layout_height="200dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center_vertical"
+
+                android:paddingLeft="15dp"
+                android:text="@string/lect_recommend_title"
+                android:textColor="@color/color_black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_recomment_lect"
+                android:layout_width="match_parent" android:layout_marginTop="5dp"
+                android:layout_height="200dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

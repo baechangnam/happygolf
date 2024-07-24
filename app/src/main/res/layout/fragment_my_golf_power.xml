@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+      <import type="android.view.View" />
+       <variable
+           name="vm"
+           type="com.artilearn.happygolfgo.ui.home.record.MyGolfPowerViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.record.MyGolfPowerFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="@{vm.myRankingBoardData.isHiddenBottom ? View.GONE : View.VISIBLE}"
+            android:layout_marginHorizontal="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:id="@+id/llOpenTopTitle"
+                        android:layout_height="30dp">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <View
+                                android:id="@+id/titleLayoutIcon"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="2dp"
+                                android:background="@drawable/my_golf_power_exam_result_month_icon"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/titleLayoutIcon"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:textColor="@color/color_white"
+                                android:text="@{vm.myRankingBoardData.title}"
+                                tools:text="3월 시험"
+                                />
+                            <View
+                                android:id="@+id/titleLayoutQuestionIcon"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="2dp"
+                                android:background="@drawable/my_golf_power_exam_result_question_icon"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:weightSum="5"
+                        android:paddingBottom="10dp"
+                        android:layout_height="40dp">
+                        <View android:layout_width="10dp"
+                              android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    android:background="@drawable/my_golf_power_exam_result_page_tv_bg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:textSize="10dp"
+                                    android:text="훈련소"
+                                    tools:text="훈련소"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    android:background="@drawable/my_golf_power_exam_result_page_tv_bg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10dp"
+                                    android:textAlignment="center"
+                                    android:text="전국"
+                                    tools:text="전국"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <include layout="@layout/my_golf_power_score_board_row_head"
+                        android:id="@+id/score_board_row_avg"
+                        app:title="@{vm.myRankingBoardData.avg.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.avg.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.avg.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.avg.score}"
+                        app:indicator="@{vm.myRankingBoardData.avg.indicator}"
+                        app:delta="@{vm.myRankingBoardData.avg.delta}"
+                        app:numberOfPlayersInMyBranch="@{vm.myRankingBoardData.avg.numberOfPlayersInMyBranch}"
+                        app:numberOfPlayersInAllBranch="@{vm.myRankingBoardData.avg.numberOfPlayersInAllBranch}"
+                        app:commentBetterThan="@{vm.myRankingBoardData.avg.commentBetterThan}"
+                        app:commentSummary="@{vm.myRankingBoardData.avg.commentSummary}"
+                        />
+<!--                    div_putting-->
+                    <include layout="@layout/my_golf_power_score_board_row"
+                        android:id="@+id/score_board_row_putting"
+                        app:title="@{vm.myRankingBoardData.putt.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.putt.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.putt.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.putt.score}"
+                        app:indicator="@{vm.myRankingBoardData.putt.indicator}"
+                        app:delta="@{vm.myRankingBoardData.putt.delta}"
+                        app:iconType="@{vm.myRankingBoardData.putt.iconType}"
+                        app:hideComments="@{vm.myRankingBoardData.putt.hideComments}"
+                        app:commentSummary="@{vm.myRankingBoardData.putt.commentSummary}"
+                        />
+                    <!--                    div_sg -->
+                    <include layout="@layout/my_golf_power_score_board_row"
+                        android:id="@+id/score_board_row_sg"
+                        app:title="@{vm.myRankingBoardData.sg.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.sg.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.sg.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.sg.score}"
+                        app:indicator="@{vm.myRankingBoardData.sg.indicator}"
+                        app:delta="@{vm.myRankingBoardData.sg.delta}"
+                        app:iconType="@{vm.myRankingBoardData.sg.iconType}"
+                        app:hideComments="@{vm.myRankingBoardData.sg.hideComments}"
+                        app:commentSummary="@{vm.myRankingBoardData.sg.commentSummary}"
+                        />
+                    <!--                    div_iron -->
+                    <include layout="@layout/my_golf_power_score_board_row"
+                        android:id="@+id/score_board_row_iron"
+                        app:title="@{vm.myRankingBoardData.iron.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.iron.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.iron.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.iron.score}"
+                        app:indicator="@{vm.myRankingBoardData.iron.indicator}"
+                        app:delta="@{vm.myRankingBoardData.iron.delta}"
+                        app:iconType="@{vm.myRankingBoardData.iron.iconType}"
+                        app:hideComments="@{vm.myRankingBoardData.iron.hideComments}"
+                        app:commentSummary="@{vm.myRankingBoardData.iron.commentSummary}"
+                        />
+                    <!--                    div_drv -->
+                    <include layout="@layout/my_golf_power_score_board_row"
+                        android:id="@+id/score_board_row_drv"
+                        app:title="@{vm.myRankingBoardData.drv.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.drv.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.drv.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.drv.score}"
+                        app:indicator="@{vm.myRankingBoardData.drv.indicator}"
+                        app:delta="@{vm.myRankingBoardData.drv.delta}"
+                        app:iconType="@{vm.myRankingBoardData.drv.iconType}"
+                        app:hideComments="@{vm.myRankingBoardData.drv.hideComments}"
+                        app:commentSummary="@{vm.myRankingBoardData.drv.commentSummary}"
+                        />
+                    <!--                    div_wu -->
+                    <include layout="@layout/my_golf_power_score_board_row"
+                        android:id="@+id/score_board_row_wu"
+                        app:title="@{vm.myRankingBoardData.wu.title}"
+                        app:rankingInMyBranch="@{vm.myRankingBoardData.wu.rankingInMyBranch}"
+                        app:rankingInAllBranch="@{vm.myRankingBoardData.wu.rankingInAllBranch}"
+                        app:score="@{vm.myRankingBoardData.wu.score}"
+                        app:indicator="@{vm.myRankingBoardData.wu.indicator}"
+                        app:delta="@{vm.myRankingBoardData.wu.delta}"
+                        app:iconType="@{vm.myRankingBoardData.wu.iconType}"
+                        app:hideComments="@{vm.myRankingBoardData.wu.hideComments}"
+                        app:commentSummary="@{vm.myRankingBoardData.wu.commentSummary}"
+                        />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@drawable/my_golf_power_exam_result_info_page_normal_background_boarder"
+                android:layout_height="80dp"
+                android:padding="12dp"
+                android:layout_marginTop="6dp"
+                >
+                <Button
+                    android:id="@+id/btn_launch_branch_ranking"
+                    android:background="@color/color_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#176FAE"
+                    android:text="훈련소 성적 >"
+                    tools:text="훈련소 성적 >"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="@{vm.myRankingBoardData.isHiddenTop ? View.GONE : View.VISIBLE}"
+            android:layout_marginHorizontal="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llNotOpenTopTitle"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="30dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <View
+                        android:id="@+id/noTitleLayoutIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="2dp"
+                        android:background="@drawable/my_golf_power_exam_result_month_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/noTitleLayoutIcon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textColor="@color/color_white"
+                        android:text="@{vm.myRankingBoardData.title}"
+                        tools:text="3월 시험"
+                        />
+                    <View
+                        android:id="@+id/noTitleLayoutQuestionIcon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginEnd="2dp"
+                        android:background="@drawable/my_golf_power_exam_result_question_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <!--            android:background="@drawable/my_golf_power_exam_result_info_page_average_background_border"-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/my_golf_power_exam_result_info_page_average_background_border"
+                app:layout_constraintTop_toBottomOf="@id/llNotOpenTopTitle"
+                android:textAlignment="center"
+                android:textColor="#4D4D4D"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="@{vm.myRankingBoardData.noticeOfNextExam}"
+                tools:text="4월 24일에 시작됩니다."
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"
+            android:layout_marginHorizontal="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

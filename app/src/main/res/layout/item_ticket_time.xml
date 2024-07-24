@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="item"
+            type="com.artilearn.happygolfgo.data.TicketTime" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+<!--        original-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_ticket_time"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="40dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:fontFamily="@font/roboto_light"-->
+<!--            android:textColor="@color/color_black"-->
+<!--            android:textSize="28dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintLeft_toRightOf="@+id/time_checkbox"-->
+<!--            bind:setTicketTimeEnd="@{item.endDate}"-->
+<!--            bind:setTicketTimeStart="@{item.startDate}"-->
+<!--            tools:text="00:00 ~ 00:00" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/txt_body"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:background="#f0f"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Elastic Body"-->
+        <!--            android:textSize="26sp"-->
+        <!--            app:layout_constraintRight_toLeftOf="@+id/txt_tail"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintLeft_toRightOf="@+id/txt_first"-->
+        <!--            />-->
+
+        <TextView
+            android:id="@+id/tv_ticket_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/color_black"
+            android:textSize="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/time_checkbox"
+            bind:setTicketTimeEnd="@{item.endDate}"
+            bind:setTicketTimeStart="@{item.startDate}"
+            tools:text="00:00 ~ 00:00" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/color_black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_ticket_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_ticket_time"
+            bind:setTicketLessonStatus="@{item.lessonAvailabilityId}"
+            bind:setTicketPlateAllCount="@{item.totalCount}"
+            tools:text="총 6석(타석)" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/color_black"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_ticket_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_ticket_time"
+            bind:setTicketLessonNowStatus="@{item.status}"
+            bind:setTicketPlateAvailableCount="@{item.availableCount}"
+            tools:text="잔여 0석(타석)" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/color_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+<!--        origianl-->
+<!--        <CheckBox-->
+<!--            android:id="@+id/time_checkbox"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/tv_ticket_time"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/tv_ticket_time"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/tv_ticket_time" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_first"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#0ff"-->
+<!--            android:text="First"-->
+<!--            android:textSize="26sp"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/txt_body"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent" />-->
+
+
+<!--        android:visibility="@{item.showCheckBox ? View.VISIBLE : View.GONE}"-->
+        <CheckBox
+            android:id="@+id/time_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_ticket_time"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ticket_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_ticket_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

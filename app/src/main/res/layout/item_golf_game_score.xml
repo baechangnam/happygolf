@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.artilearn.happygolfgo.ui.golfgame.model.GolfGameModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="296dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_golf_game_score"
+        android:elevation="4dp"
+        android:outlineProvider="none"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_golf_game_score_dr"
+            bind:onImage="@{item.club}" />
+
+        <TextView
+            android:id="@+id/tv_club"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{item.club}"
+            android:textColor="@color/color_black"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_image"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="@id/iv_image"
+            tools:text="드라이버" />
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/color_line_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_image" />
+
+        <View
+            android:id="@+id/v_center"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/color_line_gray"
+            app:layout_constraintBottom_toBottomOf="@id/tv_average_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_average_score_text" />
+
+        <View
+            android:id="@+id/v_bottom"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="76dp"
+            android:background="@color/color_line_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_top" />
+
+
+        <TextView
+            android:id="@+id/tv_average_score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="29dp"
+            android:text="@string/golf_game_average_score"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toStartOf="@id/v_center"
+            app:layout_constraintTop_toBottomOf="@id/v_top" />
+
+        <TextView
+            android:id="@+id/tv_average_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{item.averageScore}"
+            android:textColor="@color/color_black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom"
+            app:layout_constraintEnd_toEndOf="@id/tv_average_score_text"
+            app:layout_constraintStart_toStartOf="@id/tv_average_score_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_average_score_text"
+            tools:text="82" />
+
+        <TextView
+            android:id="@+id/tv_high_score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:text="@string/golf_game_high_score"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_average_score_text"
+            app:layout_constraintStart_toStartOf="@id/v_center"
+            app:layout_constraintTop_toTopOf="@id/tv_average_score_text" />
+
+        <TextView
+            android:id="@+id/tv_high_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.highScore}"
+            android:textColor="@color/color_black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_average_score"
+            app:layout_constraintEnd_toEndOf="@id/tv_high_score_text"
+            app:layout_constraintStart_toStartOf="@id/tv_high_score_text"
+            app:layout_constraintTop_toTopOf="@id/tv_average_score"
+            tools:text="98" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_bottom"
+            bind:club="@{item.club}"
+            bind:score="@{item.scores}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

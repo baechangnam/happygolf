@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.artilearn.happygolfgo.data.LectureHome" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent" android:paddingBottom="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sect_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_lect_green"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            bind:setTrainBody="@{item.sect_title}"
+            tools:text="섹션테스트" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sect_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                bind:setTrainBody="@{item.sect_label}"
+                tools:text="섹션테스트" />
+
+            <TextView
+                android:id="@+id/view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="전체보기"
+                android:textColor="@color/color_black"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/view_all_btn"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/btn_all_view" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_training"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+
+
+</layout>

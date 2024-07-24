@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable name="title" type="String"/>
+        <variable name ="rankingInMyBranch" type="String" />
+        <variable name="rankingInAllBranch" type="String" />
+        <variable name="score" type="String" />
+        <variable name="indicator" type="String"/>
+        <variable name="delta" type="String" />
+        <variable name="numberOfPlayersInMyBranch" type="String" />
+        <variable name="numberOfPlayersInAllBranch" type="String" />
+        <variable name="commentBetterThan" type="String" />
+        <variable name="commentSummary" type="String" />
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@drawable/my_golf_power_exam_result_info_page_average_background_border"
+        android:layout_height="100dp"
+        android:weightSum="5"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginVertical="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="4"
+                >
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:text="@{title}"
+                    android:textColor="#727272"
+                    android:gravity="center"
+                    tools:text="5과목\n평균"
+                    />
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:text="@{score}"
+                    android:textColor="#4ECB71"
+                    android:gravity="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="1dp"
+                android:background="@color/color_bg_my_golf_power_exam_divider"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="4">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@{numberOfPlayersInMyBranch}"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_my_golf_power_sub_title_color"
+                    android:textSize="10dp"
+                    tools:text="122명 참여"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="10dp"
+                    android:text="@{numberOfPlayersInAllBranch}"
+                    android:textColor="@color/color_my_golf_power_sub_title_color"
+                    android:gravity="center"
+                    tools:text="3617명 참여"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                    <TextView
+                        android:id="@+id/tvMyAvgRanking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/color_exam_in_header_view_in_reservation"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:text="@{rankingInMyBranch}"
+                        tools:text="210"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:text="위"
+                        app:layout_constraintLeft_toRightOf="@+id/tvMyAvgRanking"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvMyAvgRanking"
+                        android:textColor="@color/color_exam_in_header_view_in_reservation"
+                        tools:text="위" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/tvMyAvgRankingInTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/color_exam_in_header_view_in_reservation"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:text="@{rankingInAllBranch}"
+                        tools:text="9210"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:text="위"
+                        app:layout_constraintLeft_toRightOf="@+id/tvMyAvgRankingInTotal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvMyAvgRankingInTotal"
+                        android:textColor="@color/color_exam_in_header_view_in_reservation"
+                        tools:text="위" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                >
+                <View
+                    android:layout_height="1dp"
+                    android:background="@color/color_bg_my_golf_power_exam_divider"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    />
+            </LinearLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@{commentBetterThan}"
+                    tools:text="3월 보다"
+                    />
+                <View
+                    android:visibility="@{indicator.equals(`down`) ? View.VISIBLE: View.GONE}"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:background="@drawable/my_golf_power_exam_result_page_down_arrow"
+                    />
+                <View
+                    android:visibility="@{indicator.equals(`up`) ? View.VISIBLE: View.GONE}"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:background="@drawable/my_golf_power_exam_result_page_up_arrow"
+                    />
+                <View
+                    android:visibility="@{indicator.equals(`even`) ? View.VISIBLE: View.GONE}"
+                    android:layout_width="10dp"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:background="@drawable/my_golf_power_exam_result_page_even_arrow"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@{delta}"
+                    tools:text="10점"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#FF9F3F"
+                    android:textStyle="bold"
+                    android:text="@{commentSummary}"
+                    tools:text="훈련성과가 상위 13%"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

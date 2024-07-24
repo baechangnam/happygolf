@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.artilearn.happygolfgo.data.Ticket" />
+    </data>
+
+<!--    android:layout_height="114dp"-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="114dp"
+        android:layout_marginHorizontal="6dp"
+        android:elevation="4dp"
+        bind:setTicketType="@{item.type}"
+        android:outlineProvider="none"
+        app:cardCornerRadius="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="16dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/shape_radius4"
+                android:paddingVertical="2dp"
+                android:paddingHorizontal="12dp"
+                bind:setTicketType="@{item.type}"
+                android:textColor="@color/color_white"
+                tools:backgroundTint="@color/blue500"
+                tools:text="타석" />
+
+            <TextView
+                android:id="@+id/tv_ticket_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/color_black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ticket_name"
+                bind:setTicketEndDateInShortYear="@{item.endDate}"
+                bind:setTicketStartDateInShortYear="@{item.startDate}"
+                tools:text="21.09.01\n~ 22.09.24" />
+
+<!--            android:maxLines="2"-->
+<!--            android:ellipsize="end"-->
+            <TextView
+                android:id="@+id/tv_ticket_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/color_black"
+                android:text="@{item.name}"
+                android:textSize="14dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvType"
+                tools:text="티켓 이름" />
+
+<!-- doneTODO: 다중 브랜치 사용자의 지점 표시 작업  -->
+            <TextView
+                android:id="@+id/tv_branch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textAlignment="textStart"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="@{item.multipleBranchTicketUser ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_count"
+                app:layout_constraintStart_toStartOf="@id/tv_ticket_date"
+                bind:setMultiUserBranchName="@{item.branchName}"
+                tools:text="제주점" />
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/color_black"
+                android:textSize="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ticket_date"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:setTicketIsUnLimited="@{item.unlimited}"
+                bind:setTicketOnlyOnceToday="@{item.onlyOnceToday}"
+                bind:setTicketRemainingCount="@{item.remainingCount}"
+                bind:setTicketTotalCount="@{item.totalCount}"
+                tools:text="횟수 or 무제한 이용권" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

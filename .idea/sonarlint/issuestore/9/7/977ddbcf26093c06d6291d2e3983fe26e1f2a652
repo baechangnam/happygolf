@@ -1,0 +1,20 @@
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+kkotlin:S1192 "NDefine a constant instead of duplicating this literal "Network Error" 7 times.(²ì¶ýøÿÿÿÿ
+qkotlin:S1192"MDefine a constant instead of duplicating this literal "Server Error" 3 times.(õ˜—‘ÿÿÿÿÿ8‡‹ÿŸÃ.
+=======
+kkotlin:S1192!"NDefine a constant instead of duplicating this literal "Network Error" 7 times.(²ì¶ýøÿÿÿÿ
+qkotlin:S1192"MDefine a constant instead of duplicating this literal "Server Error" 3 times.(õ˜—‘ÿÿÿÿÿ8½ÚÕ›Ô.
+>>>>>>> HG-Dev-1.12.1
+=======
+qkotlin:S1192"MDefine a constant instead of duplicating this literal "Server Error" 3 times.(õ˜—‘ÿÿÿÿÿ8½ÚÕ›Ô.
+kkotlin:S1192!"NDefine a constant instead of duplicating this literal "Network Error" 7 times.(²ì¶ýøÿÿÿÿ
+>>>>>>> HG-Hotfix-1.12.1
+=======
+qkotlin:S11926"MDefine a constant instead of duplicating this literal "testest impl" 4 times.(Ã¿Ðüÿÿÿÿ8° Þ…Ü.
+=kotlin:S125;"Remove this commented out code.(ü¼î8¤ÏÞ‚Ü.
+qkotlin:S1192"MDefine a constant instead of duplicating this literal "Server Error" 3 times.(õ˜—‘ÿÿÿÿÿ8½ÚÕ›Ô.
+kkotlin:S1192"NDefine a constant instead of duplicating this literal "Network Error" 7 times.(²ì¶ýøÿÿÿÿ
+>>>>>>> hot-test-3

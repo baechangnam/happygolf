@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.artilearn.happygolfgo.ui.home.mypage.MyPageViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="프로필 설정"
+            android:textColor="@color/color_white"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_unserline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="앨범에서 사진 선택"
+            android:textColor="@color/color_white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            bind:onClick="@{() -> viewModel.onGalleryClick()}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="기본 이미지로 변경"
+            android:textColor="@color/color_white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            bind:onClick="@{() -> viewModel.onDefaultImageClick()}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="취소"
+            android:textColor="@color/color_white"
+            android:textSize="16dp"
+            bind:onClick="@{() -> viewModel.onBottomFragmentCancel()}" />
+
+
+    </LinearLayout>
+</layout>

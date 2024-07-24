@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable name="title" type="String"/>
+        <variable name="rankingInMyBranch" type="String"/>
+        <variable name="rankingInAllBranch" type="String"/>
+        <variable name="score" type="String"/>
+        <variable name="indicator" type="String" />
+        <variable name="delta" type="String" />
+        <variable name="iconType" type="String" />
+        <variable name="hideComments" type="String" />
+        <variable name="commentSummary" type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+android:background="@drawable/my_golf_power_exam_result_info_page_normal_background_boarder"
+android:layout_height="80dp"
+android:layout_marginTop="10dp"
+android:weightSum="5"
+    >
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginVertical="2dp"
+        >
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@{title}"
+            android:textColor="@color/color_my_golf_power_title_color"
+            tools:text="PUTT력"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textStyle="bold"
+            android:textSize="26dp"
+            android:textColor="#4ECB71"
+            android:gravity="center"
+            android:text="@{score}"
+            tools:text="100"
+            android:layout_weight="3"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:layout_width="1dp"
+        android:background="@color/color_bg_my_golf_power_exam_divider"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:orientation="vertical"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="10dp"
+    android:layout_weight="4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvMyPuttRanking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@{rankingInMyBranch}"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/color_my_golf_power_normal_score"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="59" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="위"
+                android:textColor="@color/color_my_golf_power_normal_score"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvMyPuttRanking"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvMyPuttRanking"
+                tools:text="위" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvMyPuttRankingInTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@{rankingInAllBranch}"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/color_my_golf_power_normal_score"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1023" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="위"
+                android:textColor="@color/color_my_golf_power_normal_score"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvMyPuttRankingInTotal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvMyPuttRankingInTotal"
+                tools:text="위" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        >
+        <View
+            android:layout_height="1dp"
+            android:background="@color/color_bg_my_golf_power_exam_divider"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:visibility="@{hideComments.equals(`Y`) ? View.GONE: View.VISIBLE}"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+<!--        android:background="@drawable/my_golf_power_score_board_weather_sunny"-->
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="1dp"
+            bind:setGolfWeatherIconInMyGolfPower="@{iconType}"
+            android:contentDescription="golf icon" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginHorizontal="1dp"
+            bind:setScoreIndicatorIconInMyGolfPower="@{indicator}"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:text="@{delta}"
+            tools:text="100" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            android:textColor="#3F7AA4"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:text="@{commentSummary}"
+            tools:text="실력 향상도가 높은 편이에요"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:orientation="vertical"-->
+<!--        tools:context=".ui.home.rhythmcoach.RhythmCoachFragment">-->
+    <data>
+        <variable
+            name="vm"
+            type="com.artilearn.happygolfgo.ui.home.rhythmcoach.RhythmCoachViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:id="@+id/pendulum_clock"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:adjustViewBounds="true"
+        android:background="@color/color_black"
+        android:src="@drawable/rhythm_coach_pendulum_clock"
+        android:scaleType="fitCenter"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:contentDescription="@string/rhythm_coach_background_image_desc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="@color/color_white"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/rhythm_coach_frament_tv_title_description" />
+            <TextView
+                android:id="@+id/tv_composer"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rhythm_coach_fragment_tv_composer_description" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UselessParent">
+
+                    <ProgressBar
+                        android:id="@+id/pb_audio"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="20dp"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:progress="@color/color_dark_red"
+                        android:indeterminateTint="@color/color_dark_red" />
+                    <TextView
+                        android:id="@+id/tv_current_pos"
+                        android:background="#00000000"
+                        android:layout_alignLeft="@id/pb_audio"
+                        android:layout_alignTop="@id/pb_audio"
+                        android:layout_alignRight="@id/pb_audio"
+                        android:layout_alignBottom="@id/pb_audio"
+                        android:text="@string/rhythm_coach_frament_tv_current_pos"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_width="wrap_content"
+                        tools:ignore="RtlHardcoded" />
+
+                    <TextView
+                        android:id="@+id/tv_max_pos"
+                        android:background="#00000000"
+                        android:layout_alignEnd="@id/pb_audio"
+                        android:layout_alignTop="@id/pb_audio"
+                        android:layout_alignRight="@id/pb_audio"
+                        android:layout_alignBottom="@id/pb_audio"
+                        android:text="@string/rhythm_coach_fragment_tv_max_pos"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_width="wrap_content"
+                        tools:ignore="RtlHardcoded" />
+
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="@color/color_blue"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_repeat"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rhythm_coach_btn_bg_repeat_off"
+                    android:contentDescription="@string/rhythm_coach_fragment_rhythm_coach_btn_repeat_ripple_description"
+                    android:visibility="visible"
+                    android:text=""
+                    />
+                <Button
+                    android:id="@+id/btn_unrepeat"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rhythm_coach_btn_repeat_ripple"
+                    android:contentDescription="@string/rhythm_coach_frament_rhythm_coach_btn_bg_repeat_off_description"
+                    android:visibility="gone"
+                    android:text="" />
+<!--                <RelativeLayout android:id="@+id/RelativeLayout01"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="fill_parent">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/rhythm_coach_btn_repeat"-->
+<!--                        android:layout_width="48dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:background="@drawable/rhythm_coach_btn_bg_repeat"-->
+<!--                        android:text="" />-->
+<!--                </RelativeLayout>-->
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_play"
+                    android:background="@drawable/rhythm_coach_btn_bg_play"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/rhythm_coach_frament_rhythm_coach_btn_bg_play_description"
+                    android:visibility="visible"
+                    android:text=""/>
+                <Button
+                    android:id="@+id/btn_pause"
+                    android:background="@drawable/rhythm_coach_btn_bg_pause"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:visibility="gone"
+                    android:contentDescription="@string/rhythm_coach_frament_rhythm_coach_btn_bg_pause_description"
+                    android:text=""/>
+<!--                <RelativeLayout android:id="@+id/relative_layout_play_pause"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    tools:ignore="UselessParent">-->
+<!--                    <Button-->
+<!--                        android:id="@+id/play_pause"-->
+<!--                        android:background="@drawable/rhythm_coach_btn_bg_play"-->
+<!--                        android:layout_width="48dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:text=""/>-->
+<!--                </RelativeLayout>-->
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:background="@color/color_white"
+                android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_speed_up"
+                        android:background="@drawable/rhythm_coach_btn_bg_speed_up"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:contentDescription="@string/rhythm_coa_frament_btn_speed_up_description"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/tv_speed_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rhythm_coach_fragment_tv_speed_display_description"
+                        android:textAlignment="center"
+                        android:textColor="@color/color_black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_speed_down"
+                    android:background="@drawable/rhythm_coach_btn_bg_speed_down"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:contentDescription="@string/rhythm_coach_btn_bg_speed_down_description"
+                    android:text="" />
+<!--                <RelativeLayout android:id="@+id/relative_layout_speed_controller"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    tools:ignore="UselessParent">-->
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_speed_up"-->
+<!--                        android:background="@drawable/rhythm_coach_btn_bg_speed_up"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_alignBottom="@id/tv_speed_display"-->
+<!--                        android:layout_marginBottom="40dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:text="" />-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_speed_display"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:layout_weight="4"-->
+<!--                        android:text="X 1"-->
+<!--                        android:textAlignment="center"-->
+<!--                        android:textColor="@color/color_black"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold" />-->
+<!--                <Button-->
+<!--                    android:id="@+id/btn_speed_down"-->
+<!--                    android:background="@drawable/rhythm_coach_btn_bg_speed_down"-->
+<!--                    android:layout_alignTop="@id/tv_speed_display"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:text="" />-->
+<!--                </RelativeLayout>-->
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</layout>
